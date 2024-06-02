@@ -1,0 +1,85 @@
+@font-face {
+  font-family: iran-yekan;
+  src: url('./thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+  INCOMPLETE: Don't use this for production, it is a work in progress!
+  @font-face {
+    font-family: iran-yekan;
+    src: url('./extra-light.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+  } 
+*/
+
+@font-face {
+  font-family: iran-yekan;
+  src: url('./light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: iran-yekan;
+  src: url('./regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: iran-yekan;
+  src: url('./medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 
+  INCOMPLETE: Don't use this for production, it is a work in progress!
+  @font-face {
+    font-family: iran-yekan;
+    src: url('./semi-bold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+*/
+
+@font-face {
+  font-family: iran-yekan;
+  src: url('./bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: iran-yekan;
+  src: url('./extra-bold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: iran-yekan;
+  src: url('./black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: iran-yekan;
+  src: url('./extra-black.woff') format('woff');
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+}
