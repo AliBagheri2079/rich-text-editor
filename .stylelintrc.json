@@ -1,0 +1,26 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "tailwind",
+          "apply",
+          "variants",
+          "responsive",
+          "screen",
+          "theme"
+        ]
+      }
+    ],
+    "no-descending-specificity": null,
+    "order/order": ["custom-properties", "declarations"],
+    "order/properties-order": ["width", "height"],
+    "max-nesting-depth": 2,
+    "selector-max-id": 1,
+    "function-no-unknown": null
+  },
+  "overrides": []
+}
