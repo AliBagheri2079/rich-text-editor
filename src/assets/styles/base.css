@@ -1,0 +1,9 @@
+@import url('../fonts');
+
+:root {
+  --font-iran-yekan: 'iran-yekan';
+}
+
+html {
+  font-family: var(--font-iran-yekan) !important;
+}
