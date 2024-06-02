@@ -6,4 +6,5 @@
 
 html {
   font-family: var(--font-iran-yekan) !important;
+  direction: rtl;
 }
