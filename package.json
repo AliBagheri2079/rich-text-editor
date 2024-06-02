@@ -23,6 +23,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.7",
     "@tiptap/extension-color": "^2.4.0",
     "@tiptap/extension-highlight": "^2.4.0",
     "@tiptap/extension-image": "^2.4.0",
@@ -39,6 +40,9 @@
     "@tiptap/extension-youtube": "^2.4.0",
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
+    "ahooks": "^3.8.0",
+    "antd": "^5.17.4",
+    "antd-img-crop": "^4.22.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
