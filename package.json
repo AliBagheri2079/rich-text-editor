@@ -1,14 +1,14 @@
 {
   "name": "rich-text-editor",
-  "title": "React Rich Text Editor",
-  "description": "فروشگاه کاشی: کاشی و ...",
+  "title": "Building a React Rich Text Editor with Advanced Features",
+  "description": "Discover how to create a sophisticated Rich Text Editor using React. This comprehensive guide covers essential features such as text formatting, embedding media, and handling user input effectively. Learn how to integrate third-party libraries, customize the editor's toolbar, and ensure a seamless user experience in your web applications. Perfect for developers looking to enhance their projects with dynamic text editing capabilities.",
   "author": {
-    "name": "Kashiland Team",
-    "email": "kashiland@team.com",
-    "url": "https://github.com/kashiland/admin"
+    "name": "Ali Bagheri",
+    "email": "alibagheri2079.dev@gmail.com",
+    "url": "https://www.github.com/alibagheri2079"
   },
   "keywords": [
-    "کاشی لند"
+    "React", "Rich Text Editor", "Text Formatting", "React Text Editor", "Web Development", "Custom Toolbar", "Embed Media", "User Input Handling", "Third-Party Libraries", "React Integration", "Advanced Features", "JavaScript", "UI/UX", "Frontend Development", "Interactive Text Editor"
   ],
   "private": true,
   "version": "0.0.0",
@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^20.13.0",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
