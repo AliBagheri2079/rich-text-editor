@@ -7,10 +7,10 @@ export default {
         'iran-yekan': ['var(--font-iran-yekan)'],
       },
       borderColor: {
-        DEFAULT: 'var(--ant-color-border)',
+        DEFAULT: '#939393',
       },
       borderRadius: {
-        DEFAULT: 'var(--ant-border-radius)',
+        DEFAULT: '0.25rem',
       },
     },
   },
