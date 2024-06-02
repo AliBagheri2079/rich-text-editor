@@ -44,7 +44,8 @@
     "antd": "^5.17.4",
     "antd-img-crop": "^4.22.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.5"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
