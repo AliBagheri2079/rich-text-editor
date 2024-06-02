@@ -19,7 +19,8 @@
     "preview": "vite preview",
     "lint": "eslint src --ext ts,tsx --fix",
     "stylelint": "stylelint src/**/*.css --fix",
-    "format": "prettier src/**/*.{ts,tsx} --write"
+    "format": "prettier src/**/*.{ts,tsx} --write",
+    "prepare": "husky"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -38,6 +39,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "eslint-plugin-tailwindcss": "^3.17.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.5",
     "postcss": "^8.4.38",
     "prettier": "^3.3.0",
     "stylelint": "^16.6.1",
