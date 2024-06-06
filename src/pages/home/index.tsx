@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 
 import { RichTextEditor } from '@/components';
 
-const description = 'توضیحات اولیه';
+const defaultDescription = 'توضیحات اولیه';
 
 export default function Home() {
   const { run: updateDescription } = useDebounceFn(
@@ -23,9 +23,13 @@ export default function Home() {
       <main>
         <div className='mx-40 my-48'>
           <RichTextEditor
-            placeholder='توضیحات را اینجا وارد کنید'
             options={{
-              content: description,
+              extensionsOptions: {
+                placeholder: {
+                  placeholder: 'توضیحات را اینجا وارد کنید',
+                },
+              },
+              content: defaultDescription,
               onUpdate: ({ editor }) => {
                 updateDescription(editor.getHTML());
               },

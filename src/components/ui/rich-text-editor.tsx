@@ -19,22 +19,35 @@ import {
   YoutubeOutlined,
 } from '@ant-design/icons';
 import { Color } from '@tiptap/extension-color';
+import type { ColorOptions } from '@tiptap/extension-color';
 import Highlight from '@tiptap/extension-highlight';
+import type { HighlightOptions } from '@tiptap/extension-highlight';
 import Image from '@tiptap/extension-image';
+import type { ImageOptions } from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
+import type { LinkOptions } from '@tiptap/extension-link';
 import ListItem from '@tiptap/extension-list-item';
 import Placeholder from '@tiptap/extension-placeholder';
+import type { PlaceholderOptions } from '@tiptap/extension-placeholder';
 import Table from '@tiptap/extension-table';
+import type { TableOptions } from '@tiptap/extension-table';
 import TableCell from '@tiptap/extension-table-cell';
+import type { TableCellOptions } from '@tiptap/extension-table-cell';
 import TableHeader from '@tiptap/extension-table-header';
+import type { TableHeaderOptions } from '@tiptap/extension-table-header';
 import TableRow from '@tiptap/extension-table-row';
+import type { TableRowOptions } from '@tiptap/extension-table-row';
 import TextAlign from '@tiptap/extension-text-align';
+import type { TextAlignOptions } from '@tiptap/extension-text-align';
 import TextStyle from '@tiptap/extension-text-style';
+import type { TextStyleOptions } from '@tiptap/extension-text-style';
 import Underline from '@tiptap/extension-underline';
+import type { UnderlineOptions } from '@tiptap/extension-underline';
 import Youtube from '@tiptap/extension-youtube';
+import type { YoutubeOptions } from '@tiptap/extension-youtube';
 import { EditorContent, useEditor } from '@tiptap/react';
-import type { Editor, EditorOptions } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
+import type { StarterKitOptions } from '@tiptap/starter-kit';
 import { useSafeState, useUpdateEffect } from 'ahooks';
 import {
   Button,
@@ -66,7 +79,7 @@ import {
 import { cn, generateBase64 } from '@/utils';
 
 type EditorToolbarProps = {
-  editor: Editor;
+  editor: NonNullable<ReturnType<typeof useEditor>>;
 };
 
 const EditorToolbar = ({ editor }: EditorToolbarProps) => {
@@ -466,67 +479,134 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   );
 };
 
+type ExtensionsOptions = {
+  starterKit: Partial<StarterKitOptions>;
+  textStyle: Partial<TextStyleOptions>;
+  textAlign: Partial<TextAlignOptions>;
+  color: Partial<ColorOptions>;
+  underline: Partial<UnderlineOptions>;
+  highlight: Partial<HighlightOptions>;
+  table: Partial<TableOptions>;
+  tableRow: Partial<TableRowOptions>;
+  tableHeader: Partial<TableHeaderOptions>;
+  tableCell: Partial<TableCellOptions>;
+  youtube: Partial<YoutubeOptions>;
+  link: Partial<LinkOptions>;
+  image: Partial<ImageOptions>;
+  placeholder: Partial<PlaceholderOptions>;
+};
+
+type Options = Parameters<typeof useEditor>[0] &
+  Record<'extensionsOptions', Partial<ExtensionsOptions>>;
+
+type DependencyList = Parameters<typeof useEditor>[1];
+
 type RichTextEditorProps = React.ComponentPropsWithoutRef<'div'> &
-  Partial<
-    Record<'placeholder', string> &
-      Record<'options', Partial<EditorOptions>> &
-      Record<'deps', React.DependencyList>
-  >;
+  Partial<Record<'options', Partial<Options>> & Record<'deps', DependencyList>>;
 
 const RichTextEditor = React.forwardRef<
   React.ElementRef<'div'>,
   RichTextEditorProps
->(({ placeholder, options, deps, className, ...props }, ref) => {
-  const editor = useEditor(
+>(
+  (
     {
-      extensions: [
-        StarterKit,
-        TextStyle,
-        TextAlign.configure({
-          defaultAlignment: 'right',
-          types: ['heading', 'paragraph'],
-        }),
-        Color.configure({ types: [TextStyle.name, ListItem.name] }),
-        Underline,
-        Highlight,
-        Table.configure({
-          resizable: true,
-        }),
-        TableRow,
-        TableHeader,
-        TableCell,
-        Youtube.configure({
-          controls: false,
-        }),
-        Link.configure({
-          openOnClick: false,
-          autolink: true,
-        }),
-        Image,
-        Placeholder.configure({
-          placeholder,
-        }),
+      options = {
+        extensionsOptions: {},
+      },
+      deps,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
+    const {
+      extensionsOptions = {
+        starterKit: {},
+        textStyle: {},
+        textAlign: {},
+        color: {},
+        underline: {},
+        highlight: {},
+        table: {},
+        tableRow: {},
+        tableHeader: {},
+        tableCell: {},
+        youtube: {},
+        link: {},
+        image: {},
+        placeholder: {},
+      },
+      ...editorOptions
+    } = options;
+    const {
+      starterKit,
+      textStyle,
+      textAlign = {
+        defaultAlignment: 'right',
+        types: ['heading', 'paragraph'],
+      },
+      color = { types: [TextStyle.name, ListItem.name] },
+      underline,
+      highlight,
+      table = {
+        resizable: true,
+      },
+      tableRow,
+      tableHeader,
+      tableCell,
+      youtube = {
+        controls: false,
+      },
+      link = {
+        openOnClick: false,
+        autolink: true,
+      },
+      image,
+      placeholder,
+    } = extensionsOptions;
+    const {
+      extensions = [
+        StarterKit.configure(starterKit),
+        TextStyle.configure(textStyle),
+        TextAlign.configure(textAlign),
+        Color.configure(color),
+        Underline.configure(underline),
+        Highlight.configure(highlight),
+        Table.configure(table),
+        TableRow.configure(tableRow),
+        TableHeader.configure(tableHeader),
+        TableCell.configure(tableCell),
+        Youtube.configure(youtube),
+        Link.configure(link),
+        Image.configure(image),
+        Placeholder.configure(placeholder),
       ],
-      editorProps: {
+      editorProps = {
         attributes: {
           class:
-            'h-96 min-h-28 resize-y overflow-y-auto p-3 focus-visible:outline-none',
+            'h-96 min-h-28 resize-y overflow-y-auto p-3 focus-visible:outline focus-visible:outline-1 focus-visible:outline-[var(--ant-color-primary-hover)]',
         },
       },
-      ...options,
-    },
-    deps,
-  );
+      ...otherEditorOptions
+    } = editorOptions;
+    const opts: typeof editorOptions = {
+      extensions,
+      editorProps,
+      ...otherEditorOptions,
+    };
 
-  if (!editor) return null;
+    const editor = useEditor(opts, deps);
 
-  return (
-    <div ref={ref} className={cn('rounded border', className)} {...props}>
-      <EditorToolbar editor={editor} />
-      <EditorContent editor={editor} />
-    </div>
-  );
-});
+    if (!editor) return null;
+
+    return (
+      <div ref={ref} className={cn('rounded border', className)} {...props}>
+        <EditorToolbar editor={editor} />
+        <EditorContent editor={editor} />
+      </div>
+    );
+  },
+);
 RichTextEditor.displayName = 'RichTextEditor';
 
 export { RichTextEditor };
